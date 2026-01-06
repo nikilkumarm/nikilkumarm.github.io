@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import { motion, useSpring, useTransform, useMotionValue } from 'framer-motion';
+// Optimized approach: Import assets for the bundler to handle correctly for production/GitHub Pages
+import portraitImg from '../assets/nikkeee.jpg';
 
 const Hero = () => {
     // Mouse motion values
@@ -217,7 +219,6 @@ const Hero = () => {
                             background: '#ffffff',
                             borderRadius: '20px',
                             marginTop: '-28px',
-                            // Realistic Plastic Edge + Deep Shadow
                             boxShadow: `
                                 0 40px 80px -20px rgba(0, 0, 0, 0.6), 
                                 0 0 0 1px rgba(0,0,0,0.1), 
@@ -234,7 +235,7 @@ const Hero = () => {
                         }}
                         whileTap={{ scale: 0.98, cursor: 'grabbing' }}
                     >
-                        {/* NOISE/GRAIN FILTER (Realistic Plastic) */}
+                        {/* Realistic Plastic Texture */}
                         <div style={{
                             position: 'absolute',
                             inset: 0,
@@ -244,7 +245,7 @@ const Hero = () => {
                             zIndex: 20
                         }} />
 
-                        {/* HOLOGRAPHIC GLARE (Interactive) */}
+                        {/* Interactive Glare Layer (Behind Data/Portrait) */}
                         <motion.div
                             style={{
                                 position: 'absolute',
@@ -252,7 +253,7 @@ const Hero = () => {
                                 background: 'linear-gradient(135deg, transparent 20%, rgba(255,255,255,0.4) 45%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0.4) 55%, transparent 80%)',
                                 opacity: 0.15,
                                 pointerEvents: 'none',
-                                zIndex: 10, // Lower than Portrait/Data
+                                zIndex: 10,
                                 x: glareX,
                                 y: glareY,
                                 scale: 2,
@@ -260,7 +261,7 @@ const Hero = () => {
                             }}
                         />
 
-                        {/* ID CARD CONTENT */}
+                        {/* TOP HEADER */}
                         <div style={{
                             position: 'relative',
                             width: '100%',
@@ -273,10 +274,9 @@ const Hero = () => {
                             zIndex: 2,
                             boxShadow: 'inset 0 -5px 15px rgba(0,0,0,0.1)'
                         }}>
-                            {/* Glossy Header Effect */}
                             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(255,255,255,0.2), transparent)', pointerEvents: 'none' }} />
 
-                            {/* THE SLOT */}
+                            {/* SLOT */}
                             <div style={{ width: '100%', height: '40px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                                 <div style={{
                                     width: '38px',
@@ -287,51 +287,72 @@ const Hero = () => {
                                     boxShadow: 'inset 0 1px 3px rgba(0,0,0,0.5), 0 1px 0 rgba(255,255,255,0.2)'
                                 }} />
                             </div>
-
                         </div>
 
-                        {/* PORTRAIT */}
+                        {/* PORTRAIT - Layered Above Glare */}
                         <div style={{ width: '150px', height: '150px', background: '#fff', borderRadius: '50%', margin: '-80px auto 0', padding: '5px', position: 'relative', zIndex: 20, boxShadow: '0 12px 30px rgba(0,0,0,0.15)' }}>
                             <div style={{ width: '100%', height: '100%', borderRadius: '50%', border: '4px solid var(--accent-primary)', overflow: 'hidden', position: 'relative' }}>
-                                <img src="./src/assets/nikkeee.jpg" alt="Nikil" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                                {/* Subtle Image Glare */}
+                                <img
+                                    src={portraitImg}
+                                    alt="Nikil"
+                                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                                    onError={(e) => {
+                                        // Fallback if import fails for some reason
+                                        e.target.src = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000&auto=format&fit=crop";
+                                    }}
+                                />
                                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 50%)', pointerEvents: 'none' }} />
                             </div>
                         </div>
 
-                        {/* DATA */}
+                        {/* DATA - Focused and Optimized Spacing */}
                         <div style={{ flex: 1, padding: '15px', display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative', zIndex: 21 }}>
                             <h2 style={{ fontSize: '24px', fontWeight: '700', color: 'var(--accent-primary)', margin: '4px 0', fontFamily: "'Montserrat', sans-serif" }}>NIKILKUMAR</h2>
-                            <p style={{ fontSize: '14px', fontWeight: '800', color: '#111', textTransform: 'uppercase', letterSpacing: '1.5px', marginBottom: '15px' }}>Software Engineer</p>
+                            <p style={{ fontSize: '14px', fontWeight: '800', color: '#111', textTransform: 'uppercase', letterSpacing: '1.5px', marginBottom: '12px' }}>Software Engineer</p>
 
-                            <div style={{ display: 'flex', flexDirection: 'column', gap: '5px', alignItems: 'center' }}>
-                                <div style={{ fontSize: '11px', fontWeight: '600', color: '#666' }}><span style={{ color: 'var(--accent-primary)' }}>ID: </span> 012345</div>
-                                <div style={{ fontSize: '11px', fontWeight: '600', color: '#666' }}><span style={{ color: 'var(--accent-primary)' }}>JOIN DATE: </span> JAN 2026</div>
-                                <div style={{ fontSize: '11px', fontWeight: '600', color: '#666' }}><span style={{ color: 'var(--accent-primary)' }}>PHONE: </span> +91 8124887577</div>
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', alignItems: 'center', padding: '0 10px' }}>
+                                <div style={{ fontSize: '10px', fontWeight: '600', color: '#666', background: 'rgba(0,0,0,0.03)', padding: '2px 10px', borderRadius: '8px' }}>
+                                    <span style={{ color: 'var(--accent-primary)', fontWeight: '800' }}>ID:</span> 012345
+                                </div>
+                                <div style={{ fontSize: '10px', fontWeight: '600', color: '#666', background: 'rgba(0,0,0,0.03)', padding: '2px 10px', borderRadius: '8px' }}>
+                                    <span style={{ color: 'var(--accent-primary)', fontWeight: '800' }}>JOIN DATE:</span> JAN 2026
+                                </div>
+                                <div style={{ fontSize: '10px', fontWeight: '600', color: '#666', background: 'rgba(0,0,0,0.03)', padding: '2px 10px', borderRadius: '8px' }}>
+                                    <span style={{ color: 'var(--accent-primary)', fontWeight: '800' }}>PHONE:</span> +91 8124887577
+                                </div>
                             </div>
 
-                            {/* Security Hologram Sticker */}
+                            {/* Refined Security Hologram */}
                             <motion.div
-                                animate={{ rotate: 360 }}
-                                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                                animate={{ rotate: 360, scale: [1, 1.1, 1] }}
+                                transition={{ rotate: { duration: 20, repeat: Infinity, ease: "linear" }, scale: { duration: 4, repeat: Infinity, ease: "easeInOut" } }}
                                 style={{
                                     position: 'absolute',
-                                    right: '15px',
-                                    bottom: '60px',
-                                    width: '35px',
-                                    height: '35px',
+                                    right: '18px',
+                                    bottom: '55px',
+                                    width: '32px',
+                                    height: '32px',
                                     borderRadius: '50%',
-                                    background: 'conic-gradient(from 0deg, #f0f, #0ff, #ff0, #f0f)',
-                                    opacity: 0.15,
+                                    background: 'conic-gradient(from 0deg, #f0f, #0ff, #f0f, #ff0, #f0f)',
+                                    opacity: 0.25,
                                     zIndex: 1,
-                                    filter: 'blur(2px)'
+                                    filter: 'blur(1px) contrast(1.2)',
+                                    boxShadow: '0 0 10px rgba(0,0,0,0.1)'
                                 }}
                             />
 
-                            <div style={{ marginTop: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
-                                <div style={{ display: 'flex', gap: '2px', height: '30px', width: '160px', padding: '4px' }}>
-                                    {[2, 1, 4, 1, 1, 2, 1, 1, 3, 1, 1, 2, 1, 4, 1, 1, 2, 1, 1, 3, 1].map((width, i) => (
-                                        <div key={i} style={{ flex: width, background: '#000', height: '100%', opacity: 0.8 }} />
+                            <div style={{ marginTop: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%', gap: '6px' }}>
+                                {/* Minimalist Barcode Pattern */}
+                                <div style={{
+                                    display: 'flex',
+                                    gap: '1px',
+                                    height: '24px',
+                                    width: '160px',
+                                    opacity: 0.7,
+                                    transition: 'opacity 0.3s'
+                                }}>
+                                    {[2, 1, 4, 1, 1, 2, 1, 1, 3, 1, 1, 2, 1, 4, 1, 1, 2, 1, 1, 3, 1, 1, 2, 1, 4, 1, 1, 2, 1, 1, 3, 1].map((width, i) => (
+                                        <div key={i} style={{ flex: width, background: '#111', height: '100%' }} />
                                     ))}
                                 </div>
                                 <a
@@ -340,12 +361,12 @@ const Hero = () => {
                                     rel="noopener noreferrer"
                                     style={{ textDecoration: 'none', display: 'block', pointerEvents: 'auto', cursor: 'pointer', zIndex: 25 }}
                                 >
-                                    <span style={{ fontSize: '10px', color: '#6e6e6eff', letterSpacing: '1px' }}>www.cinelinestudios.in</span>
+                                    <span style={{ fontSize: '10px', color: '#6e6e6e', letterSpacing: '1px', fontWeight: '500' }}>www.cinelinestudios.in</span>
                                 </a>
                             </div>
                         </div>
 
-                        {/* SCANNER overlay */}
+                        {/* Laser Scanner Effect Layer */}
                         <motion.div animate={{ top: ['0%', '100%'] }} transition={{ duration: 6, repeat: Infinity, ease: "linear" }} style={{ position: 'absolute', left: 0, width: '100%', height: '2px', background: 'linear-gradient(90deg, transparent, var(--accent-primary), transparent)', opacity: 0.15, zIndex: 10 }} />
                     </motion.div>
                 </motion.div>
