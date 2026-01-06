@@ -1,8 +1,8 @@
 import React from 'react';
-import Header from './components/Header.jsx';
-import Hero from './components/Hero.jsx';
-import Projects from './components/Projects.jsx';
-import Contact from './components/Contact.jsx';
+import Header from './components/Header.js';
+import Hero from './components/Hero.js';
+import Projects from './components/Projects.js';
+import Contact from './components/Contact.js';
 
 function App() {
   return (
@@ -21,7 +21,7 @@ function App() {
       }}>
         <div className="container">
           <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>
-            © {new Date().getFullYear()} Your Name. Built with Love and Node.js.
+            © {new Date().getFullYear()} NIKILKUMAR
           </p>
         </div>
       </footer>
