@@ -1,8 +1,8 @@
 import React from 'react';
-import Header from './components/Header.js';
-import Hero from './components/Hero.js';
-import Projects from './components/Projects.js';
-import Contact from './components/Contact.js';
+import Header from './components/Header.jsx';
+import Hero from './components/Hero.jsx';
+import Projects from './components/Projects.jsx';
+import Contact from './components/Contact.jsx';
 
 function App() {
   return (
