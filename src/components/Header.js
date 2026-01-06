@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
     const [scrolled, setScrolled] = useState(false);
@@ -14,17 +15,17 @@ const Header = () => {
     return (
         <header className={`header ${scrolled ? 'scrolled' : ''}`}>
             <div className="container nav">
-                <a href="#" className="logo">PORT<span className="gradient-text">FOLIO</span></a>
+                <Link to="/" className="logo" style={{ color: 'var(--accent-primary)' }}>NIKILKUMAR</Link>
 
                 <ul className="nav-links">
-                    <li><a href="#about" className="nav-link">About</a></li>
-                    <li><a href="#projects" className="nav-link">Projects</a></li>
-                    <li><a href="#contact" className="nav-link">Contact</a></li>
+                    <li><Link to="/about" className="nav-link">About</Link></li>
+                    <li><Link to="/projects" className="nav-link">Projects</Link></li>
+                    <li><Link to="/contact" className="nav-link">Contact</Link></li>
                 </ul>
 
-                <a href="#contact" className="btn btn-secondary" style={{ padding: '0.5rem 1.25rem', fontSize: '0.85rem' }}>
+                <Link to="/contact" className="btn btn-secondary" style={{ padding: '0.5rem 1.25rem', fontSize: '0.85rem' }}>
                     Let's Talk
-                </a>
+                </Link>
             </div>
         </header>
     );
