@@ -112,7 +112,7 @@ const Header = () => {
                                     fontFamily: 'var(--font-heading)',
                                     fontWeight: '800',
                                     fontSize: '1.1rem',
-                                    color: 'var(--text-primary)',
+                                    color: (scrolled || isMenuOpen || isHovered) ? '#ffffff' : 'var(--text-primary)',
                                     letterSpacing: '-0.02em',
                                     overflow: 'hidden',
                                     whiteSpace: 'nowrap'
@@ -137,7 +137,9 @@ const Header = () => {
                                             href={link.path}
                                             style={{
                                                 position: 'relative',
-                                                color: pathname === link.path ? 'var(--text-primary)' : 'var(--text-secondary)',
+                                                color: pathname === link.path
+                                                    ? ((scrolled || isMenuOpen || isHovered) ? '#ffffff' : 'var(--text-primary)')
+                                                    : ((scrolled || isMenuOpen || isHovered) ? 'rgba(255, 255, 255, 0.7)' : 'var(--text-secondary)'),
                                                 fontSize: '0.75rem',
                                                 fontWeight: '600',
                                                 fontFamily: 'var(--font-main)',
@@ -148,9 +150,9 @@ const Header = () => {
                                                 gap: '6px',
                                                 letterSpacing: '0.05em'
                                             }}
-                                            onMouseEnter={(e) => e.currentTarget.style.color = 'var(--text-primary)'}
+                                            onMouseEnter={(e) => e.currentTarget.style.color = (scrolled || isMenuOpen || isHovered) ? '#ffffff' : 'var(--text-primary)'}
                                             onMouseLeave={(e) => {
-                                                if (pathname !== link.path) e.currentTarget.style.color = 'var(--text-secondary)';
+                                                if (pathname !== link.path) e.currentTarget.style.color = (scrolled || isMenuOpen || isHovered) ? 'rgba(255, 255, 255, 0.7)' : 'var(--text-secondary)';
                                             }}
                                         >
                                             {link.name}
@@ -160,7 +162,7 @@ const Header = () => {
                                                     style={{
                                                         width: '4px',
                                                         height: '4px',
-                                                        background: 'var(--text-primary)',
+                                                        background: (scrolled || isMenuOpen || isHovered) ? '#ffffff' : 'var(--text-primary)',
                                                         borderRadius: '50%',
                                                         marginBottom: '1px'
                                                     }}
@@ -186,7 +188,14 @@ const Header = () => {
                             border: '1px solid var(--glass-border)'
                         }}>
                             <span style={{ width: '6px', height: '6px', background: '#00ff40', borderRadius: '50%', boxShadow: '0 0 6px rgba(0,255,64,0.4)' }} />
-                            <span style={{ fontSize: '0.8rem', fontFamily: 'var(--font-main)', fontWeight: '500', color: 'var(--text-secondary)' }}>{timeString} IST</span>
+                            <span style={{
+                                fontSize: '0.8rem',
+                                fontFamily: 'var(--font-main)',
+                                fontWeight: '500',
+                                color: (scrolled || isMenuOpen || isHovered) ? 'rgba(255, 255, 255, 0.7)' : 'var(--text-secondary)'
+                            }}>
+                                {timeString} IST
+                            </span>
                         </div>
                     )}
 

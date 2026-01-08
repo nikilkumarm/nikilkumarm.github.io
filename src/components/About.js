@@ -54,9 +54,8 @@ const StatItem = ({ label, value, suffix = "", pad = 0, icon, index, isMobile })
                     style={{
                         position: 'absolute', inset: 0,
                         borderRadius: '50%',
-                        border: '1px dashed rgba(255,255,255,0.1)',
+                        border: '1px dashed var(--reactor-ring-1)',
                         borderTop: '1px solid var(--accent-primary)',
-                        opacity: 0.5
                     }}
                 />
 
@@ -67,7 +66,7 @@ const StatItem = ({ label, value, suffix = "", pad = 0, icon, index, isMobile })
                     style={{
                         position: 'absolute', inset: isMobile ? '6px' : '10px',
                         borderRadius: '50%',
-                        border: '1px solid rgba(255,255,255,0.05)',
+                        border: '1px solid var(--reactor-ring-2)',
                         borderLeft: '1px solid rgba(255,255,255,0.3)',
                     }}
                 />
@@ -76,10 +75,10 @@ const StatItem = ({ label, value, suffix = "", pad = 0, icon, index, isMobile })
                 <div style={{
                     width: isMobile ? '40px' : '60px', height: isMobile ? '40px' : '60px',
                     borderRadius: '50%',
-                    background: 'radial-gradient(circle at 30% 30%, rgba(255,255,255,0.1), #050505)',
-                    boxShadow: 'inset 0 0 10px rgba(0,0,0,0.8), 0 0 20px rgba(0,0,0,0.5)',
+                    background: 'var(--reactor-bg)',
+                    boxShadow: 'var(--reactor-shadow)',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    border: '1px solid rgba(255,255,255,0.1)',
+                    border: '1px solid var(--reactor-border)',
                     backdropFilter: 'blur(4px)',
                     zIndex: 2
                 }}>
