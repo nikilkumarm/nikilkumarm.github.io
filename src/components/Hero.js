@@ -306,7 +306,7 @@ const Hero = () => {
                     {/* 1. LANYARD STRAP (Realistic Fabric Texture) */}
                     <div style={{
                         width: 'auto',
-                        height: isMobile ? '24vh' : '28vh',
+                        height: isMobile ? '42vh' : '28vh',
                         position: 'relative',
                         display: 'flex',
                         flexDirection: 'column',
