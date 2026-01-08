@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import footerLogo from '../assets/footer-logo.png';
 import Link from 'next/link';
-import { Twitter, Instagram, Youtube, Github, Linkedin, Mail } from 'lucide-react';
+import { Instagram, Youtube, Github, Linkedin, Mail } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const Footer = () => {
@@ -25,11 +25,11 @@ const Footer = () => {
 
     const socialLinks = [
         { icon: <Github size={18} />, url: "https://github.com/nikilkumarm" },
-        { icon: <Linkedin size={18} />, url: "https://linkedin.com/in/nikilkumarm" }, // Guessing based on pattern, or just generic
-        { icon: <Twitter size={18} />, url: "https://twitter.com/nikilkumarm" },
-        { icon: <Instagram size={18} />, url: "https://instagram.com/nikilkumarm" },
-        { icon: <Youtube size={20} />, url: "https://youtube.com/@nikilkumarm" },
-        { icon: <Mail size={18} />, url: "mailto:hello@nikilkumar.com" }
+        { icon: <Linkedin size={18} />, url: "https://in.linkedin.com/in/nikilkumarm" }, // Guessing based on pattern, or just generic
+        { icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>, url: "https://twitter.com/inikil_" },
+        { icon: <Instagram size={18} />, url: "https://instagram.com/inikil._" },
+        { icon: <Youtube size={20} />, url: "https://www.youtube.com/@cinelinestudios" },
+        { icon: <Mail size={18} />, url: "mailto:nikilkingzzz@gmail.com" }
     ];
 
     return (

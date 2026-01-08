@@ -90,7 +90,7 @@ const FloatingActions = () => {
 
                 {/* Main WhatsApp Fab */}
                 <motion.a
-                    href="https://wa.me/918825457794?text=Hello%20Nikil,%20I'm%20interested%20in%20your%20services."
+                    href="https://wa.me/918124887577?text=Hello%20Nikil,%20I'm%20interested%20in%20your%20services."
                     target="_blank"
                     rel="noopener noreferrer"
                     initial={{ scale: 0 }}

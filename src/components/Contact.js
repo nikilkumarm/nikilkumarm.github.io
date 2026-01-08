@@ -89,7 +89,7 @@ const Contact = () => {
                     <div style={{ display: 'flex', gap: '2rem' }}>
                         <div>
                             <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginBottom: '0.4rem' }}>Email</p>
-                            <a href="mailto:hello@nikilkumar.in" style={{ fontSize: '1.1rem', fontWeight: '600', color: 'var(--text-primary)', textDecoration: 'none' }}>
+                            <a href="mailto:nikilkingzzz@gmail.com" style={{ fontSize: '1.1rem', fontWeight: '600', color: 'var(--text-primary)', textDecoration: 'none' }}>
                                 nikilkingzzz@gmail.com
                             </a>
                         </div>
@@ -172,14 +172,27 @@ const Contact = () => {
                         </div>
 
                         {/* Form Body */}
-                        <form style={{ padding: isMobile ? '1.5rem' : '2.5rem', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                        <form
+                            onSubmit={(e) => {
+                                e.preventDefault();
+                                const name = e.target.name.value;
+                                const email = e.target.email.value;
+                                const message = e.target.message.value;
+                                const subject = `Project Inquiry from ${name}`;
+                                const body = `Name: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0AProject Details:%0D%0A${message}`;
+                                window.location.href = `mailto:nikilkingzzz@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+                            }}
+                            style={{ padding: isMobile ? '1.5rem' : '2.5rem', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}
+                        >
                             <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: '1.5rem' }}>
                                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                                     <label style={{ fontSize: '0.8rem', fontWeight: '600', color: 'rgba(255,255,255,0.7)', marginLeft: '4px', fontFamily: 'inherit' }}>
                                         Full name <span style={{ color: '#EF4444' }}>*</span>
                                     </label>
                                     <input
+                                        name="name"
                                         type="text"
+                                        required
                                         placeholder="Enter your name"
                                         style={{
                                             width: '100%',
@@ -199,7 +212,9 @@ const Contact = () => {
                                         Email <span style={{ color: '#EF4444' }}>*</span>
                                     </label>
                                     <input
+                                        name="email"
                                         type="email"
+                                        required
                                         placeholder="Enter your email"
                                         style={{
                                             width: '100%',
@@ -221,6 +236,8 @@ const Contact = () => {
                                     Project Details <span style={{ color: '#EF4444' }}>*</span>
                                 </label>
                                 <textarea
+                                    name="message"
+                                    required
                                     placeholder="Tell me about your project needs..."
                                     rows="4"
                                     style={{
@@ -239,6 +256,7 @@ const Contact = () => {
                             </div>
 
                             <motion.button
+                                type="submit"
                                 whileHover={{ scale: 1.02 }}
                                 whileTap={{ scale: 0.98 }}
                                 style={{

@@ -70,7 +70,7 @@ const Header = () => {
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
-                padding: isMobile ? '0.5rem 1rem' : '0.75rem 1.5rem',
+                padding: isMobile ? '0.5rem 0.75rem' : '0.75rem 1.5rem',
                 background: (scrolled || isMenuOpen || isHovered)
                     ? 'rgba(10, 10, 12, 0.85)'
                     : 'transparent',
@@ -82,7 +82,7 @@ const Header = () => {
                     ? '0 20px 40px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05)'
                     : 'none',
                 transition: 'all 0.5s cubic-bezier(0.22, 1, 0.36, 1)',
-                maxWidth: isMobile ? '92%' : (scrolled ? '1000px' : '1400px'),
+                maxWidth: isMobile ? '94%' : (scrolled ? '1000px' : '1400px'),
                 margin: '0 auto',
                 position: 'relative',
                 zIndex: 1100
@@ -224,9 +224,9 @@ const Header = () => {
                         <button
                             onClick={() => setIsMenuOpen(!isMenuOpen)}
                             style={{
-                                background: 'rgba(255, 255, 255, 0.03)',
-                                border: '1px solid rgba(255, 255, 255, 0.08)',
-                                color: 'var(--text-primary)',
+                                background: '#ffffff',
+                                border: 'none',
+                                color: '#000000',
                                 width: '42px',
                                 height: '42px',
                                 borderRadius: '50%',
@@ -239,7 +239,7 @@ const Header = () => {
                                 transition: 'all 0.4s cubic-bezier(0.22, 1, 0.36, 1)',
                                 position: 'relative',
                                 overflow: 'hidden',
-                                boxShadow: isHovered ? '0 0 15px rgba(168, 85, 247, 0.2)' : 'none'
+                                boxShadow: '0 4px 15px rgba(255, 255, 255, 0.2)'
                             }}
                         >
                             <motion.div
@@ -247,7 +247,7 @@ const Header = () => {
                                 style={{
                                     width: '18px',
                                     height: '2px',
-                                    background: 'var(--text-primary)',
+                                    background: '#000000',
                                     borderRadius: '10px'
                                 }}
                             />
@@ -255,7 +255,7 @@ const Header = () => {
                                 animate={isMenuOpen ? { rotate: -45, y: -3, width: '18px' } : { rotate: 0, y: 0, width: '12px' }}
                                 style={{
                                     height: '2px',
-                                    background: 'var(--accent-primary)',
+                                    background: isMenuOpen ? '#000000' : 'var(--accent-primary)',
                                     borderRadius: '10px',
                                     alignSelf: isMenuOpen ? 'center' : 'flex-end',
                                     marginRight: isMenuOpen ? '0' : '10px'
@@ -355,7 +355,7 @@ const Header = () => {
                         }}>
                             <span>{timeString} IST</span>
                             <span style={{ opacity: 0.3 }}>|</span>
-                            <span>BANGALORE, IN</span>
+                            <span>AVAILABLE GLOBALLY</span>
                         </div>
                     </motion.div>
                 )}
