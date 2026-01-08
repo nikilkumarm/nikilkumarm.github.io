@@ -1,5 +1,5 @@
 "use client";
-import React from 'react';
+import React, { useState } from 'react';
 import footerLogo from '../assets/footer-logo.png';
 import Link from 'next/link';
 import { Twitter, Instagram, Youtube, Github, Linkedin, Mail } from 'lucide-react';
@@ -7,6 +7,14 @@ import { motion } from 'framer-motion';
 
 const Footer = () => {
     const currentYear = new Date().getFullYear();
+    const [isMobile, setIsMobile] = useState(false);
+
+    React.useEffect(() => {
+        const handleResize = () => setIsMobile(window.innerWidth < 768);
+        handleResize();
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     const navLinks = [
         { name: "HOME", path: "/" },
@@ -28,19 +36,26 @@ const Footer = () => {
         <footer className="footer-main" style={{
             background: '#0a0a0a',
             color: '#ffffff',
-            padding: '80px 0',
+            padding: isMobile ? '60px 0' : '80px 0',
             borderTop: '1px solid rgba(255, 255, 255, 0.05)',
             fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif'
         }}>
             <div className="container" style={{
                 display: 'flex',
+                flexDirection: isMobile ? 'column' : 'row',
                 justifyContent: 'space-between',
-                alignItems: 'flex-start',
+                alignItems: isMobile ? 'center' : 'flex-start',
                 flexWrap: 'wrap',
-                gap: '3rem'
+                gap: isMobile ? '2.5rem' : '3rem',
+                textAlign: isMobile ? 'center' : 'left'
             }}>
                 {/* Left Column */}
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+                <div style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: isMobile ? '1.5rem' : '2rem',
+                    alignItems: isMobile ? 'center' : 'flex-start'
+                }}>
                     {/* Logo - Green N Monogram */}
                     <div style={{ display: 'flex', alignItems: 'center' }}>
                         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -69,7 +84,7 @@ const Footer = () => {
                         </div>
                     </div>
 
-                    <div style={{ display: 'flex', gap: '1.25rem', alignItems: 'center' }}>
+                    <div style={{ display: 'flex', gap: isMobile ? '1rem' : '1.25rem', alignItems: 'center' }}>
                         {socialLinks.map((social, index) => (
                             <a
                                 key={index}
@@ -91,10 +106,16 @@ const Footer = () => {
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'space-between',
-                    alignItems: 'flex-end',
-                    minHeight: '160px'
+                    alignItems: isMobile ? 'center' : 'flex-end',
+                    minHeight: isMobile ? 'auto' : '160px',
+                    gap: isMobile ? '2rem' : '0'
                 }}>
-                    <nav style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap', justifyContent: 'flex-end' }}>
+                    <nav style={{
+                        display: 'flex',
+                        gap: isMobile ? '1rem' : '1.5rem',
+                        flexWrap: 'wrap',
+                        justifyContent: isMobile ? 'center' : 'flex-end'
+                    }}>
                         {navLinks.map((link, i) => (
                             <Link
                                 key={i}
@@ -142,10 +163,10 @@ const Footer = () => {
                                 textTransform: 'uppercase',
                                 display: 'flex',
                                 alignItems: 'center',
-                                gap: '12px'
+                                gap: isMobile ? '8px' : '12px'
                             }}>
-                                <span style={{ fontSize: '11px', letterSpacing: '0.25em', fontWeight: '300', lineHeight: 1 }}>ARCHITECTED BY</span>
-                                <span style={{ fontWeight: '800', letterSpacing: '0.05em', fontSize: '24px', lineHeight: 1 }}>NIKILKUMAR</span>
+                                <span style={{ fontSize: isMobile ? '9px' : '11px', letterSpacing: '0.25em', fontWeight: '300', lineHeight: 1 }}>ARCHITECTED BY</span>
+                                <span style={{ fontWeight: '800', letterSpacing: '0.05em', fontSize: isMobile ? '18px' : '24px', lineHeight: 1 }}>NIKILKUMAR</span>
                             </div>
                         </div>
 

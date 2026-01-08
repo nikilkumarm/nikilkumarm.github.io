@@ -5,8 +5,8 @@ import FloatingActions from '../components/FloatingActions';
 import BackgroundShapes from '../components/BackgroundShapes';
 
 export const metadata = {
-    title: 'Nikilkumar | Portfolio',
-    description: 'Full Stack Engineer & Broadcast Specialist',
+    title: 'Nikilkumar',
+    description: 'Web Developer & Broadcast Engineer',
 };
 
 export default function RootLayout({ children }) {

@@ -54,11 +54,11 @@ const Contact = () => {
                     </div>
 
                     <h2 style={{
-                        fontSize: 'clamp(3rem, 5vw, 4.5rem)',
+                        fontSize: isMobile ? 'clamp(2.5rem, 8vw, 3.5rem)' : 'clamp(3rem, 5vw, 4.5rem)',
                         fontWeight: '800',
                         lineHeight: '1.1',
                         color: 'var(--text-primary)',
-                        marginBottom: '1.5rem',
+                        marginBottom: '1rem',
                         fontFamily: 'var(--font-heading)',
                         letterSpacing: '-0.03em'
                     }}>
@@ -76,9 +76,9 @@ const Contact = () => {
 
                     <p style={{
                         color: 'var(--text-secondary)',
-                        fontSize: '1.2rem',
+                        fontSize: isMobile ? '1rem' : '1.2rem',
                         lineHeight: '1.6',
-                        marginBottom: '3rem',
+                        marginBottom: isMobile ? '2rem' : '3rem',
                         maxWidth: '450px'
                     }}>
                         Describe what you need. I'll help you build a digital experience that fits your brand — instantly.
@@ -156,7 +156,7 @@ const Contact = () => {
                     >
                         {/* Title Bar */}
                         <div style={{
-                            padding: '1rem 1.5rem',
+                            padding: isMobile ? '0.75rem 1rem' : '1rem 1.5rem',
                             borderBottom: '1px solid rgba(255,255,255,0.05)',
                             display: 'flex', alignItems: 'center', gap: '0.6rem',
                             background: 'rgba(255,255,255,0.02)'

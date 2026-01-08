@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { motion, useTransform, useInView, useMotionValue, animate } from 'framer-motion';
 import { Terminal, Layers, Users, Cpu, Quote, Sparkles, Code } from 'lucide-react';
 const portraitImg = { src: '/nikiiii.jpg' };
@@ -126,6 +126,15 @@ const About = () => {
     const mouseX = useMotionValue(0);
     const mouseY = useMotionValue(0);
 
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const handleResize = () => setIsMobile(window.innerWidth < 768);
+        handleResize();
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     const handleMouseMove = (e) => {
         const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
         mouseX.set(e.clientX - left - width / 2);
@@ -146,12 +155,22 @@ const About = () => {
     ];
 
     return (
-        <section ref={containerRef} id="about" style={{ position: 'relative', padding: '10rem 0', overflow: 'hidden' }}>
+        <section ref={containerRef} id="about" style={{
+            position: 'relative',
+            padding: isMobile ? '5rem 0' : '10rem 0',
+            overflow: 'hidden'
+        }}>
 
             <div className="container" style={{ position: 'relative', zIndex: 2 }}>
 
                 {/* 01. HEADER SECTION */}
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginBottom: '8rem', paddingLeft: '6%' }}>
+                <div style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '1rem',
+                    marginBottom: isMobile ? '4rem' : '8rem',
+                    paddingLeft: isMobile ? '0' : '6%'
+                }}>
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -163,8 +182,8 @@ const About = () => {
                     </motion.div>
 
                     <h2 style={{
-                        fontSize: 'clamp(2.5rem, 6vw, 5.5rem)',
-                        lineHeight: '0.9',
+                        fontSize: isMobile ? 'clamp(2rem, 10vw, 3rem)' : 'clamp(2.5rem, 6vw, 5.5rem)',
+                        lineHeight: '1.0',
                         fontWeight: '800',
                         color: 'var(--text-primary)',
                         fontFamily: 'var(--font-heading)',
@@ -211,8 +230,8 @@ const About = () => {
                 <div style={{
                     display: 'grid',
                     gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 400px), 1fr))',
-                    gap: '4rem',
-                    marginBottom: '10rem',
+                    gap: isMobile ? '2.5rem' : '4rem',
+                    marginBottom: isMobile ? '6rem' : '10rem',
                     alignItems: 'center'
                 }}>
 
@@ -393,12 +412,12 @@ const About = () => {
                 </div>
 
                 {/* 02. CYBER REACTOR STATS */}
-                <div style={{ padding: '0 2rem', position: 'relative' }}>
+                <div style={{ padding: isMobile ? '0 1rem' : '0 2rem', position: 'relative' }}>
 
                     {/* The Rail Line */}
                     <div style={{
                         position: 'absolute',
-                        top: '50px',
+                        top: isMobile ? '35px' : '50px',
                         left: '0',
                         right: '0',
                         height: '1px',

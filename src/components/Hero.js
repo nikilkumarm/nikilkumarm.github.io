@@ -180,8 +180,8 @@ const Hero = () => {
                 transition={{ delay: 0.5, duration: 1 }}
                 style={{
                     position: 'absolute',
-                    top: isMobile ? '15%' : '25%',
-                    left: isMobile ? '7%' : '5%',
+                    top: isMobile ? '12%' : '25%',
+                    left: isMobile ? '8%' : '5%',
                     zIndex: 5,
                     display: 'flex',
                     alignItems: 'flex-start',
@@ -227,8 +227,8 @@ const Hero = () => {
                 transition={{ delay: 0.8, duration: 1 }}
                 style={{
                     position: 'absolute',
-                    bottom: isMobile ? '14%' : '18%',
-                    right: isMobile ? '7%' : '5%',
+                    bottom: isMobile ? '15%' : '18%',
+                    right: isMobile ? '8%' : '5%',
                     zIndex: 5,
                     textAlign: 'right',
                     scale: isMobile ? 0.8 : 1,
@@ -251,9 +251,9 @@ const Hero = () => {
                         color: 'var(--text-primary)',
                         fontFamily: 'var(--font-heading)',
                         fontWeight: '900',
-                        fontSize: isMobile ? '1.05rem' : '1.2rem',
+                        fontSize: isMobile ? '0.9rem' : '1.2rem',
                         letterSpacing: '-0.02em',
-                        lineHeight: '1.1'
+                        lineHeight: '1.2'
                     }}>
                         <ScrambleText text="ARCHITECTING DIGITAL" />
                         <br />
@@ -295,7 +295,7 @@ const Hero = () => {
                         rotateZ: cardRotateZ,
                         rotateX: cardRotateX,
                         x: cardMoveX,
-                        scale: isMobile ? 0.58 : 1,
+                        scale: isMobile ? 0.5 : 1,
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center',
@@ -306,7 +306,7 @@ const Hero = () => {
                     {/* 1. LANYARD STRAP (Realistic Fabric Texture) */}
                     <div style={{
                         width: 'auto',
-                        height: isMobile ? '20vh' : '28vh',
+                        height: isMobile ? '24vh' : '28vh',
                         position: 'relative',
                         display: 'flex',
                         flexDirection: 'column',
