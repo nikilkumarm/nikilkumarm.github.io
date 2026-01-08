@@ -105,7 +105,7 @@ const Hero = () => {
         <section
             className="hero"
             onMouseMove={handleMouseMove}
-            style={{ height: '100vh', overflow: 'hidden', position: 'relative', perspective: '1200px' }}
+            style={{ height: isMobile ? '85vh' : '100vh', overflow: 'hidden', position: 'relative', perspective: '1200px' }}
         >
             {/* Background Text - Parallax Effect */}
             <motion.div style={{
@@ -126,13 +126,13 @@ const Hero = () => {
             }}>
                 {/* Top Outline */}
                 <h1 style={{
-                    fontSize: 'clamp(3.5rem, 18vw, 16rem)',
+                    fontSize: isMobile ? 'clamp(1rem, 9vw, 5rem)' : 'clamp(3.5rem, 18vw, 16rem)',
                     fontWeight: '600',
                     fontFamily: "'Montserrat', sans-serif",
                     color: 'transparent',
                     WebkitTextStroke: '1px var(--text-stroke-subtle)',
                     lineHeight: '0.85',
-                    letterSpacing: '5px',
+                    letterSpacing: isMobile ? '2px' : '5px',
                     margin: 0,
                     pointerEvents: 'none',
                     userSelect: 'none'
@@ -142,12 +142,12 @@ const Hero = () => {
 
                 {/* Center Solid */}
                 <h1 style={{
-                    fontSize: 'clamp(3.5rem, 18vw, 16rem)',
+                    fontSize: isMobile ? 'clamp(1rem, 9vw, 5rem)' : 'clamp(3.5rem, 18vw, 16rem)',
                     fontWeight: '600',
                     fontFamily: "'Montserrat', sans-serif",
                     color: 'var(--text-subtle-fill)',
                     lineHeight: '0.85',
-                    letterSpacing: '5px',
+                    letterSpacing: isMobile ? '2px' : '5px',
                     opacity: 1,
                     margin: 0,
                     pointerEvents: 'none',
@@ -158,13 +158,13 @@ const Hero = () => {
 
                 {/* Bottom Outline */}
                 <h1 style={{
-                    fontSize: 'clamp(3.5rem, 18vw, 16rem)',
+                    fontSize: isMobile ? 'clamp(1rem, 9vw, 5rem)' : 'clamp(3.5rem, 18vw, 16rem)',
                     fontWeight: '900',
                     fontFamily: "'Montserrat', sans-serif",
                     color: 'transparent',
                     WebkitTextStroke: '1px var(--text-stroke-subtle)',
                     lineHeight: '0.85',
-                    letterSpacing: '5px',
+                    letterSpacing: isMobile ? '2px' : '5px',
                     margin: 0,
                     pointerEvents: 'none',
                     userSelect: 'none'
@@ -180,13 +180,13 @@ const Hero = () => {
                 transition={{ delay: 0.5, duration: 1 }}
                 style={{
                     position: 'absolute',
-                    top: isMobile ? '12%' : '25%',
+                    top: isMobile ? '18%' : '25%',
                     left: isMobile ? '8%' : '5%',
                     zIndex: 5,
                     display: 'flex',
                     alignItems: 'flex-start',
                     gap: '12px',
-                    scale: isMobile ? 0.8 : 1,
+                    scale: isMobile ? 0.6 : 1,
                     transformOrigin: 'left top'
                 }}
             >
@@ -227,7 +227,7 @@ const Hero = () => {
                 transition={{ delay: 0.8, duration: 1 }}
                 style={{
                     position: 'absolute',
-                    bottom: isMobile ? '15%' : '18%',
+                    bottom: isMobile ? '8%' : '18%',
                     right: isMobile ? '8%' : '5%',
                     zIndex: 5,
                     textAlign: 'right',
@@ -295,7 +295,7 @@ const Hero = () => {
                         rotateZ: cardRotateZ,
                         rotateX: cardRotateX,
                         x: cardMoveX,
-                        scale: isMobile ? 0.5 : 1,
+                        scale: isMobile ? 0.6 : 1,
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center',
@@ -306,7 +306,7 @@ const Hero = () => {
                     {/* 1. LANYARD STRAP (Realistic Fabric Texture) */}
                     <div style={{
                         width: 'auto',
-                        height: isMobile ? '42vh' : '28vh',
+                        height: isMobile ? '47vh' : '28vh',
                         position: 'relative',
                         display: 'flex',
                         flexDirection: 'column',
@@ -498,7 +498,7 @@ const Hero = () => {
 
                             {/* Info Section */}
                             <div style={{ padding: '12px 15px', textAlign: 'center', zIndex: 10, position: 'relative', display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                                <h2 style={{ fontSize: '28px', fontWeight: '900', color: '#111827', margin: '0', fontFamily: "'Plus Jakarta Sans', sans-serif", letterSpacing: '-0.5px' }}>NIKILKUMAR</h2>
+                                <h2 style={{ fontSize: isMobile ? '20px' : '28px', fontWeight: '900', color: '#111827', margin: '0', fontFamily: "'Plus Jakarta Sans', sans-serif", letterSpacing: '-0.5px' }}>NIKILKUMAR</h2>
                                 <p style={{ fontSize: '9px', fontWeight: '600', color: '#4b5563', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '8px' }}>Web Developer & Broadcast Engineer</p>
 
                                 <div style={{

@@ -446,13 +446,15 @@ ul {
 @media (max-width: 640px) {
   .footer-main .container {
     flex-direction: column !important;
-    align-items: flex-start !important;
-    gap: 3rem !important;
+    align-items: center !important;
+    gap: 2.5rem !important;
+    text-align: center !important;
   }
 
   .footer-main nav {
-    justify-content: flex-start !important;
-    gap: 1.25rem !important;
+    justify-content: center !important;
+    gap: 1.5rem !important;
+    width: 100% !important;
   }
 
   .footer-main nav>a {
@@ -460,7 +462,7 @@ ul {
   }
 
   .footer-main div:last-child {
-    align-items: flex-start !important;
-    width: 100%;
+    align-items: center !important;
+    width: 100% !important;
   }
 }

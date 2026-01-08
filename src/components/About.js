@@ -4,7 +4,7 @@ import { motion, useTransform, useInView, useMotionValue, animate } from 'framer
 import { Terminal, Layers, Users, Cpu, Quote, Sparkles, Code } from 'lucide-react';
 const portraitImg = { src: '/nikiiii.jpg' };
 
-const StatItem = ({ label, value, suffix = "", pad = 0, icon, index }) => {
+const StatItem = ({ label, value, suffix = "", pad = 0, icon, index, isMobile }) => {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-50px" });
     const count = useMotionValue(0);
@@ -38,12 +38,12 @@ const StatItem = ({ label, value, suffix = "", pad = 0, icon, index }) => {
                 whileHover={{ scale: 1.1 }}
                 style={{
                     position: 'relative',
-                    width: '100px',
-                    height: '100px',
+                    width: isMobile ? '70px' : '100px',
+                    height: isMobile ? '70px' : '100px',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    marginBottom: '2rem',
+                    marginBottom: isMobile ? '1rem' : '2rem',
                     cursor: 'pointer'
                 }}
             >
@@ -65,7 +65,7 @@ const StatItem = ({ label, value, suffix = "", pad = 0, icon, index }) => {
                     whileHover={{ rotate: -360, scale: 1.1 }}
                     transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
                     style={{
-                        position: 'absolute', inset: '10px',
+                        position: 'absolute', inset: isMobile ? '6px' : '10px',
                         borderRadius: '50%',
                         border: '1px solid rgba(255,255,255,0.05)',
                         borderLeft: '1px solid rgba(255,255,255,0.3)',
@@ -74,7 +74,7 @@ const StatItem = ({ label, value, suffix = "", pad = 0, icon, index }) => {
 
                 {/* The Core Lens */}
                 <div style={{
-                    width: '60px', height: '60px',
+                    width: isMobile ? '40px' : '60px', height: isMobile ? '40px' : '60px',
                     borderRadius: '50%',
                     background: 'radial-gradient(circle at 30% 30%, rgba(255,255,255,0.1), #050505)',
                     boxShadow: 'inset 0 0 10px rgba(0,0,0,0.8), 0 0 20px rgba(0,0,0,0.5)',
@@ -84,13 +84,13 @@ const StatItem = ({ label, value, suffix = "", pad = 0, icon, index }) => {
                     zIndex: 2
                 }}>
                     <div style={{ color: 'var(--text-primary)' }}>
-                        {React.cloneElement(icon, { size: 28, strokeWidth: 1.5 })}
+                        {React.cloneElement(icon, { size: isMobile ? 20 : 28, strokeWidth: 1.5 })}
                     </div>
                 </div>
             </motion.div>
 
             <motion.h3 style={{
-                fontSize: '3rem',
+                fontSize: isMobile ? '2rem' : '3rem',
                 fontWeight: '800',
                 color: 'var(--text-primary)',
                 margin: 0,
@@ -102,13 +102,13 @@ const StatItem = ({ label, value, suffix = "", pad = 0, icon, index }) => {
             </motion.h3>
 
             <p style={{
-                fontSize: '0.75rem',
+                fontSize: isMobile ? '0.65rem' : '0.75rem',
                 color: 'var(--text-secondary)',
                 fontWeight: '600',
                 textTransform: 'uppercase',
-                letterSpacing: '0.2em',
-                marginTop: '1rem',
-                padding: '0.5rem 1rem',
+                letterSpacing: '0.15em',
+                marginTop: isMobile ? '0.5rem' : '1rem',
+                padding: isMobile ? '0.4rem 0.75rem' : '0.5rem 1rem',
                 background: 'rgba(255,255,255,0.03)',
                 borderRadius: '99px',
                 border: '1px solid rgba(255,255,255,0.05)'
@@ -157,7 +157,7 @@ const About = () => {
     return (
         <section ref={containerRef} id="about" style={{
             position: 'relative',
-            padding: isMobile ? '5rem 0' : '10rem 0',
+            padding: isMobile ? '2rem 0 5rem' : '10rem 0',
             overflow: 'hidden'
         }}>
 
@@ -182,8 +182,8 @@ const About = () => {
                     </motion.div>
 
                     <h2 style={{
-                        fontSize: isMobile ? 'clamp(2rem, 10vw, 3rem)' : 'clamp(2.5rem, 6vw, 5.5rem)',
-                        lineHeight: '1.0',
+                        fontSize: isMobile ? 'clamp(1.4rem, 6.5vw, 2.5rem)' : 'clamp(2.5rem, 6vw, 5.5rem)',
+                        lineHeight: isMobile ? '1.4' : '1.0',
                         fontWeight: '800',
                         color: 'var(--text-primary)',
                         fontFamily: 'var(--font-heading)',
@@ -195,7 +195,7 @@ const About = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.8 }}
-                            style={{ display: 'block', fontWeight: '200' }}
+                            style={{ display: 'block', fontWeight: '200', whiteSpace: 'nowrap' }}
                         >
                             BEYOND THE <span style={{
                                 color: 'var(--text-secondary)',
@@ -203,15 +203,16 @@ const About = () => {
                                 backdropFilter: 'blur(8px)',
                                 WebkitBackdropFilter: 'blur(8px)',
                                 border: '1px solid var(--glass-border)',
-                                padding: '0.2rem 1rem',
+                                padding: isMobile ? '0.1rem 0.6rem' : '0.2rem 1rem',
                                 borderRadius: '12px',
                                 display: 'inline-block',
-                                marginLeft: '1rem',
+                                marginLeft: '0.5rem',
                                 fontFamily: "'Courier New', Courier, monospace",
                                 fontWeight: '700',
                                 letterSpacing: '-0.05em',
                                 verticalAlign: 'middle',
-                                transform: 'translateY(-0.1em)'
+                                transform: 'translateY(-0.1em)',
+                                fontSize: isMobile ? '0.9em' : '1em'
                             }}>CODE</span>
                         </motion.span>
                         <motion.span
@@ -219,9 +220,9 @@ const About = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.8, delay: 0.1 }}
-                            style={{ display: 'block', fontWeight: '900', WebkitTextStroke: '2px currentColor' }}
+                            style={{ display: 'block', fontWeight: '900', WebkitTextStroke: isMobile ? '1px currentColor' : '2px currentColor', whiteSpace: 'nowrap', marginTop: isMobile ? '0.2rem' : '0' }}
                         >
-                            i ENGINEER <span style={{ color: 'var(--accent-primary)', textShadow: '0 0 30px rgba(168, 85, 247, 0.3)' }}>IMPACT.</span>
+                            I ENGINEER <span style={{ color: 'var(--accent-primary)', textShadow: '0 0 30px rgba(168, 85, 247, 0.3)' }}>IMPACT.</span>
                         </motion.span>
                     </h2>
                 </div>
@@ -259,28 +260,32 @@ const About = () => {
 
                         {/* Headline */}
                         <h3 style={{
-                            fontSize: '1.8rem',
+                            fontSize: isMobile ? '1.5rem' : '1.8rem',
                             fontWeight: '700',
                             lineHeight: '1.2',
                             marginBottom: '1.5rem',
                             color: 'var(--text-primary)',
                             letterSpacing: '-0.02em',
                             fontFamily: 'var(--font-heading)',
-                            whiteSpace: 'nowrap'
+                            whiteSpace: isMobile ? 'normal' : 'nowrap'
                         }}>
                             Architecting <span className="gradient-text">digital ecosystems.</span>
                         </h3>
 
                         {/* Professional Copy */}
-                        <p style={{ fontSize: '0.95rem', lineHeight: '1.8', color: 'var(--text-secondary)', marginBottom: '1.5rem', textAlign: 'justify' }}>
-                            I am a <b>Full Stack Engineer</b> and <b>Broadcast Specialist</b> valued for clean code and clarity. I bridge the gap between technical complexity and user experience, building applications that simply work.
+                        <p style={{ fontSize: isMobile ? '0.9rem' : '1rem', lineHeight: '1.7', color: 'var(--text-secondary)', marginBottom: '1.5rem', textAlign: 'justify' }}>
+                            I am a <b>Web Developer</b> and <b>Broadcast Engineer</b> focused on high-performance digital ecosystems. I bridge the gap between technical complexity and seamless, intuitive user experience.
                         </p>
-                        <p style={{ fontSize: '0.95rem', lineHeight: '1.8', color: 'var(--text-secondary)', marginBottom: '3rem', textAlign: 'justify' }}>
-                            No buzzwords or bloat - just performant, scalable systems designed to handle the real world. I focus on creating digital products that are as robust under the hood as they are beautiful on the screen.
+                        <p style={{ fontSize: isMobile ? '0.9rem' : '1rem', lineHeight: '1.7', color: 'var(--text-secondary)', marginBottom: isMobile ? '2rem' : '3rem', textAlign: 'justify' }}>
+                            I build scalable, reliable systems and refined interfaces designed to thrive in real-world environments. My goal is simple: create digital products that are as robust under the hood as they are striking on the screen.
                         </p>
 
                         {/* Micro-Grid: Key Competencies */}
-                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '1rem' }}>
+                        <div style={{
+                            display: 'grid',
+                            gridTemplateColumns: 'repeat(3, 1fr)',
+                            gap: isMobile ? '0.5rem' : '1rem'
+                        }}>
                             {[
                                 {
                                     icon: <Code size={22} />,
@@ -306,15 +311,15 @@ const About = () => {
                                     whileHover={{ y: -8, boxShadow: `0 15px 30px -10px ${item.color}30` }}
                                     transition={{ type: "spring", stiffness: 300 }}
                                     style={{
-                                        padding: '1.5rem',
+                                        padding: isMobile ? '1rem 0.75rem' : '1.5rem',
                                         background: 'var(--glass)',
                                         backdropFilter: 'blur(12px)',
                                         border: '1px solid var(--glass-border)',
-                                        borderRadius: '24px',
+                                        borderRadius: isMobile ? '16px' : '24px',
                                         display: 'flex',
                                         flexDirection: 'column',
                                         justifyContent: 'space-between',
-                                        minHeight: '180px',
+                                        minHeight: isMobile ? '140px' : '180px',
                                         position: 'relative',
                                         overflow: 'hidden'
                                     }}
@@ -324,21 +329,22 @@ const About = () => {
 
                                     {/* Icon Box */}
                                     <div style={{
-                                        width: '48px', height: '48px',
-                                        borderRadius: '14px',
+                                        width: isMobile ? '32px' : '48px',
+                                        height: isMobile ? '32px' : '48px',
+                                        borderRadius: isMobile ? '10px' : '14px',
                                         background: `${item.color}15`,
                                         border: `1px solid ${item.color}30`,
                                         display: 'flex', alignItems: 'center', justifyContent: 'center',
                                         color: item.color,
-                                        marginBottom: '1rem',
+                                        marginBottom: isMobile ? '0.75rem' : '1rem',
                                         boxShadow: `0 0 15px -5px ${item.color}40`
                                     }}>
-                                        {item.icon}
+                                        {React.cloneElement(item.icon, { size: isMobile ? 16 : 22 })}
                                     </div>
 
                                     <div style={{ position: 'relative', zIndex: 1 }}>
-                                        <h4 style={{ color: 'var(--text-primary)', fontSize: '1.1rem', fontWeight: '700', marginBottom: '0.4rem', letterSpacing: '-0.01em' }}>{item.label}</h4>
-                                        <span style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', lineHeight: '1.4', display: 'block', whiteSpace: 'nowrap' }}>{item.sub}</span>
+                                        <h4 style={{ color: 'var(--text-primary)', fontSize: isMobile ? '0.75rem' : '1.1rem', fontWeight: '700', marginBottom: isMobile ? '0.2rem' : '0.4rem', letterSpacing: '-0.01em' }}>{item.label}</h4>
+                                        <span style={{ fontSize: isMobile ? '0.6rem' : '0.75rem', color: 'var(--text-secondary)', lineHeight: '1.2', display: 'block' }}>{item.sub}</span>
                                     </div>
                                 </motion.div>
                             ))}
@@ -439,11 +445,11 @@ const About = () => {
 
                     <div style={{
                         display: 'grid',
-                        gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-                        gap: '2rem',
+                        gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : 'repeat(auto-fit, minmax(200px, 1fr))',
+                        gap: isMobile ? '2.5rem 1rem' : '2rem',
                     }}>
                         {stats.map((stat, i) => (
-                            <StatItem key={i} index={i} {...stat} />
+                            <StatItem key={i} index={i} isMobile={isMobile} {...stat} />
                         ))}
                     </div>
                 </div>

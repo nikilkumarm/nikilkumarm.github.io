@@ -10,6 +10,7 @@ const Header = () => {
     const [currentTime, setCurrentTime] = useState(new Date());
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
+    const [isHovered, setIsHovered] = useState(false);
     const pathname = usePathname();
 
     useEffect(() => {
@@ -59,27 +60,29 @@ const Header = () => {
                 left: 0,
                 width: '100%',
                 zIndex: 1000,
-                padding: scrolled ? '0.75rem 0' : '1.5rem 0',
-                transition: 'all 0.4s cubic-bezier(0.22, 1, 0.36, 1)'
+                padding: isMobile ? '1rem 0' : (scrolled ? '0.75rem 0' : '1.5rem 0'),
+                transition: 'all 0.5s cubic-bezier(0.22, 1, 0.36, 1)'
             }}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
         >
             <div className="container" style={{
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
-                padding: '0.75rem 1.5rem',
-                background: (scrolled || isMenuOpen)
-                    ? 'var(--glass)'
+                padding: isMobile ? '0.5rem 1rem' : '0.75rem 1.5rem',
+                background: (scrolled || isMenuOpen || isHovered)
+                    ? 'rgba(10, 10, 12, 0.85)'
                     : 'transparent',
-                backdropFilter: (scrolled || isMenuOpen) ? 'blur(16px) saturate(180%)' : 'none',
-                WebkitBackdropFilter: (scrolled || isMenuOpen) ? 'blur(16px) saturate(180%)' : 'none',
-                borderRadius: scrolled ? '24px' : '12px',
-                border: scrolled ? '1px solid var(--glass-border)' : '1px solid transparent',
-                boxShadow: scrolled
-                    ? '0 20px 40px -10px rgba(0, 0, 0, 0.1), inset 0 1px 0 var(--glass-border)'
+                backdropFilter: (scrolled || isMenuOpen || isHovered) ? 'blur(20px) saturate(180%)' : 'none',
+                WebkitBackdropFilter: (scrolled || isMenuOpen || isHovered) ? 'blur(20px) saturate(180%)' : 'none',
+                borderRadius: (scrolled || isHovered || isMenuOpen) ? '100px' : (isMobile ? '100px' : '16px'),
+                border: (scrolled || isHovered || isMenuOpen) ? '1px solid rgba(255, 255, 255, 0.08)' : '1px solid transparent',
+                boxShadow: (scrolled || isHovered || isMenuOpen)
+                    ? '0 20px 40px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05)'
                     : 'none',
-                transition: 'all 0.4s cubic-bezier(0.22, 1, 0.36, 1)',
-                maxWidth: scrolled ? '1000px' : '1400px',
+                transition: 'all 0.5s cubic-bezier(0.22, 1, 0.36, 1)',
+                maxWidth: isMobile ? '92%' : (scrolled ? '1000px' : '1400px'),
                 margin: '0 auto',
                 position: 'relative',
                 zIndex: 1100
@@ -100,7 +103,7 @@ const Header = () => {
                         </svg>
                     </div>
                     <AnimatePresence>
-                        {(!scrolled || !isMobile) && (
+                        {!isMobile && (
                             <motion.span
                                 initial={{ opacity: 0, width: 0 }}
                                 animate={{ opacity: 1, width: 'auto' }}
@@ -221,20 +224,43 @@ const Header = () => {
                         <button
                             onClick={() => setIsMenuOpen(!isMenuOpen)}
                             style={{
-                                background: 'var(--glass-border)',
-                                border: '1px solid var(--glass-border)',
+                                background: 'rgba(255, 255, 255, 0.03)',
+                                border: '1px solid rgba(255, 255, 255, 0.08)',
                                 color: 'var(--text-primary)',
-                                width: '40px',
-                                height: '40px',
-                                borderRadius: '12px',
+                                width: '42px',
+                                height: '42px',
+                                borderRadius: '50%',
                                 display: 'flex',
+                                flexDirection: 'column',
                                 alignItems: 'center',
                                 justifyContent: 'center',
+                                gap: '4px',
                                 cursor: 'pointer',
-                                transition: 'all 0.3s ease'
+                                transition: 'all 0.4s cubic-bezier(0.22, 1, 0.36, 1)',
+                                position: 'relative',
+                                overflow: 'hidden',
+                                boxShadow: isHovered ? '0 0 15px rgba(168, 85, 247, 0.2)' : 'none'
                             }}
                         >
-                            {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
+                            <motion.div
+                                animate={isMenuOpen ? { rotate: 45, y: 3 } : { rotate: 0, y: 0 }}
+                                style={{
+                                    width: '18px',
+                                    height: '2px',
+                                    background: 'var(--text-primary)',
+                                    borderRadius: '10px'
+                                }}
+                            />
+                            <motion.div
+                                animate={isMenuOpen ? { rotate: -45, y: -3, width: '18px' } : { rotate: 0, y: 0, width: '12px' }}
+                                style={{
+                                    height: '2px',
+                                    background: 'var(--accent-primary)',
+                                    borderRadius: '10px',
+                                    alignSelf: isMenuOpen ? 'center' : 'flex-end',
+                                    marginRight: isMenuOpen ? '0' : '10px'
+                                }}
+                            />
                         </button>
                     )}
                 </div>

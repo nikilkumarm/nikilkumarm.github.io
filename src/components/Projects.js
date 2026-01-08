@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Github, ArrowUpRight, Code2, Layers, Film, Brain, BarChart3, Palette } from 'lucide-react';
 const cinelineLogo = '/cs logo t.png';
@@ -46,7 +46,7 @@ const projects = [
     }
 ];
 
-const ProjectCard = ({ project, index }) => {
+const ProjectCard = ({ project, index, isMobile }) => {
     const [isHovered, setIsHovered] = useState(false);
 
     return (
@@ -120,7 +120,7 @@ const ProjectCard = ({ project, index }) => {
             </div>
 
             {/* Project Content */}
-            <div style={{ padding: '2rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
+            <div style={{ padding: isMobile ? '1.25rem' : '2rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
                 <div style={{
                     display: 'flex',
                     alignItems: 'center',
@@ -130,7 +130,7 @@ const ProjectCard = ({ project, index }) => {
                     marginBottom: '1rem'
                 }}>
                     <h3 style={{
-                        fontSize: '1.4rem',
+                        fontSize: isMobile ? '1.2rem' : '1.4rem',
                         fontWeight: '700',
                         color: '#fff',
                         fontFamily: 'var(--font-heading)',
@@ -159,12 +159,13 @@ const ProjectCard = ({ project, index }) => {
                 </div>
 
                 <p style={{
-                    fontSize: '0.95rem',
+                    fontSize: isMobile ? '0.85rem' : '0.95rem',
                     color: 'rgba(255,255,255,0.5)',
-                    lineHeight: '1.7',
-                    marginBottom: '2.5rem',
+                    lineHeight: '1.6',
+                    marginBottom: isMobile ? '1.5rem' : '2.5rem',
                     flex: 1,
-                    letterSpacing: '0.01em'
+                    letterSpacing: '0.01em',
+                    textAlign: 'justify'
                 }}>
                     {project.desc}
                 </p>
@@ -212,8 +213,17 @@ const ProjectCard = ({ project, index }) => {
 };
 
 const Projects = () => {
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const handleResize = () => setIsMobile(window.innerWidth < 768);
+        handleResize();
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     return (
-        <section id="projects" className="section" style={{ padding: '10rem 0', background: '#020202', position: 'relative' }}>
+        <section id="projects" className="section" style={{ padding: isMobile ? '5rem 0' : '10rem 0', background: '#020202', position: 'relative' }}>
             {/* Background Grid Pattern */}
             <div style={{
                 position: 'absolute', inset: 0,
@@ -349,11 +359,11 @@ const Projects = () => {
                 <div className="projects-grid" style={{
                     display: 'grid',
                     gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 350px), 1fr))',
-                    gap: '3rem',
-                    padding: '0 2rem'
+                    gap: isMobile ? '1.5rem' : '3rem',
+                    padding: isMobile ? '0 0.5rem' : '0 2rem'
                 }}>
                     {projects.map((project, index) => (
-                        <ProjectCard key={index} project={project} index={index} />
+                        <ProjectCard key={index} project={project} index={index} isMobile={isMobile} />
                     ))}
                 </div>
             </div>

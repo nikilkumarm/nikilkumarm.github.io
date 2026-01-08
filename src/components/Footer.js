@@ -54,7 +54,8 @@ const Footer = () => {
                     display: 'flex',
                     flexDirection: 'column',
                     gap: isMobile ? '1.5rem' : '2rem',
-                    alignItems: isMobile ? 'center' : 'flex-start'
+                    alignItems: isMobile ? 'center' : 'flex-start',
+                    width: isMobile ? '100%' : 'auto'
                 }}>
                     {/* Logo - Green N Monogram */}
                     <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -64,7 +65,13 @@ const Footer = () => {
                         </svg>
                     </div>
 
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                    <div style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '4px',
+                        alignItems: isMobile ? 'center' : 'flex-start',
+                        textAlign: isMobile ? 'center' : 'left'
+                    }}>
                         <div style={{
                             color: '#e5e5e5',
                             fontSize: '13px',
@@ -84,7 +91,12 @@ const Footer = () => {
                         </div>
                     </div>
 
-                    <div style={{ display: 'flex', gap: isMobile ? '1rem' : '1.25rem', alignItems: 'center' }}>
+                    <div style={{
+                        display: 'flex',
+                        gap: isMobile ? '1.25rem' : '1.25rem',
+                        alignItems: 'center',
+                        justifyContent: isMobile ? 'center' : 'flex-start'
+                    }}>
                         {socialLinks.map((social, index) => (
                             <a
                                 key={index}
@@ -108,13 +120,18 @@ const Footer = () => {
                     justifyContent: 'space-between',
                     alignItems: isMobile ? 'center' : 'flex-end',
                     minHeight: isMobile ? 'auto' : '160px',
-                    gap: isMobile ? '2rem' : '0'
+                    gap: isMobile ? '2.5rem' : '0',
+                    width: isMobile ? '100%' : 'auto'
                 }}>
                     <nav style={{
                         display: 'flex',
-                        gap: isMobile ? '1rem' : '1.5rem',
+                        gap: isMobile ? '1.5rem' : '1.5rem',
                         flexWrap: 'wrap',
-                        justifyContent: isMobile ? 'center' : 'flex-end'
+                        justifyContent: isMobile ? 'center' : 'flex-end',
+                        alignItems: 'center',
+                        width: isMobile ? '100%' : 'auto',
+                        margin: 0,
+                        padding: 0
                     }}>
                         {navLinks.map((link, i) => (
                             <Link
@@ -125,7 +142,8 @@ const Footer = () => {
                                     fontSize: '14px',
                                     fontWeight: '500',
                                     textDecoration: 'none',
-                                    transition: 'color 0.2s'
+                                    transition: 'color 0.2s',
+                                    whiteSpace: 'nowrap'
                                 }}
                                 onMouseOver={(e) => e.target.style.color = '#fff'}
                                 onMouseOut={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.5)'}
@@ -136,25 +154,31 @@ const Footer = () => {
                     </nav>
 
                     <div style={{
-                        marginTop: 'auto',
+                        marginTop: isMobile ? '1.5rem' : 'auto',
                         display: 'flex',
                         flexDirection: 'column',
-                        alignItems: 'flex-end',
-                        gap: '0.8rem'
+                        alignItems: isMobile ? 'center' : 'flex-end',
+                        gap: '0.8rem',
+                        width: isMobile ? '100%' : 'auto'
                     }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                            <div style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '12px', height: '12px' }}>
-                                <div style={{ width: '8px', height: '8px', background: '#00ff40ff', borderRadius: '50%', boxShadow: '0 0 10px rgba(0, 255, 98, 0.5)', zIndex: 2 }} />
+                        <div style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: isMobile ? '0.6rem' : '1.2rem',
+                            justifyContent: isMobile ? 'center' : 'flex-end'
+                        }}>
+                            <div style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '10px', height: '10px' }}>
+                                <div style={{ width: '6px', height: '6px', background: '#00ff40', borderRadius: '50%', boxShadow: '0 0 10px rgba(0, 255, 64, 0.8)', zIndex: 2 }} />
                                 <motion.div
-                                    animate={{ scale: [1, 2.2], opacity: [0.5, 0] }}
+                                    animate={{ scale: [1, 2.2], opacity: [0.6, 0] }}
                                     transition={{ duration: 2, repeat: Infinity, ease: "easeOut" }}
-                                    style={{ position: 'absolute', width: '8px', height: '8px', background: '#00ff40ff', borderRadius: '50%', zIndex: 1 }}
+                                    style={{ position: 'absolute', width: '6px', height: '6px', background: '#00ff40', borderRadius: '50%', zIndex: 1 }}
                                 />
                             </div>
 
                             <div style={{
                                 height: '1px',
-                                width: '35px',
+                                width: isMobile ? '20px' : '45px',
                                 background: 'rgba(255,255,255,0.15)'
                             }} />
 
@@ -163,20 +187,33 @@ const Footer = () => {
                                 textTransform: 'uppercase',
                                 display: 'flex',
                                 alignItems: 'center',
-                                gap: isMobile ? '8px' : '12px'
+                                gap: isMobile ? '8px' : '10px'
                             }}>
-                                <span style={{ fontSize: isMobile ? '9px' : '11px', letterSpacing: '0.25em', fontWeight: '300', lineHeight: 1 }}>ARCHITECTED BY</span>
-                                <span style={{ fontWeight: '800', letterSpacing: '0.05em', fontSize: isMobile ? '18px' : '24px', lineHeight: 1 }}>NIKILKUMAR</span>
+                                <span style={{
+                                    fontSize: isMobile ? '7px' : '11px',
+                                    letterSpacing: '0.3em',
+                                    fontWeight: '300',
+                                    lineHeight: 1,
+                                    opacity: 0.8
+                                }}>ARCHITECTED BY</span>
+                                <span style={{
+                                    fontWeight: '900',
+                                    letterSpacing: '0.02em',
+                                    fontSize: isMobile ? '15px' : '26px',
+                                    lineHeight: 1,
+                                    fontFamily: 'var(--font-heading)'
+                                }}>NIKILKUMAR</span>
                             </div>
                         </div>
 
                         <div style={{
-                            fontSize: '9px',
-                            color: 'rgba(255,255,255,0.25)',
-                            letterSpacing: '0.5em',
+                            fontSize: isMobile ? '6.5px' : '10px',
+                            color: 'rgba(255,255,255,0.2)',
+                            letterSpacing: isMobile ? '0.4em' : '0.6em',
                             fontFamily: 'monospace',
-                            textAlign: 'right',
-                            textTransform: 'uppercase'
+                            textAlign: isMobile ? 'center' : 'right',
+                            textTransform: 'uppercase',
+                            marginTop: '0.2rem'
                         }}>
                             VER: 2.0.4 // 12.9716° N, 77.5946° E
                         </div>

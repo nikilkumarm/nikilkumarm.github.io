@@ -54,19 +54,20 @@ const Contact = () => {
                     </div>
 
                     <h2 style={{
-                        fontSize: isMobile ? 'clamp(2.5rem, 8vw, 3.5rem)' : 'clamp(3rem, 5vw, 4.5rem)',
+                        fontSize: isMobile ? 'clamp(1.8rem, 7vw, 2.5rem)' : 'clamp(3rem, 5vw, 4.5rem)',
                         fontWeight: '800',
-                        lineHeight: '1.1',
+                        lineHeight: '1.2',
                         color: 'var(--text-primary)',
                         marginBottom: '1rem',
                         fontFamily: 'var(--font-heading)',
-                        letterSpacing: '-0.03em'
+                        letterSpacing: '-0.03em',
+                        whiteSpace: isMobile ? 'nowrap' : 'normal'
                     }}>
                         Let's <span style={{
                             background: 'linear-gradient(to right, #A78BFA, #3B82F6)',
                             WebkitBackgroundClip: 'text',
                             WebkitTextFillColor: 'transparent'
-                        }}>Create</span> <br />
+                        }}>Create</span> {!isMobile && <br />}
                         <span style={{
                             background: 'linear-gradient(to right, #F472B6, #A78BFA)',
                             WebkitBackgroundClip: 'text',
@@ -76,10 +77,11 @@ const Contact = () => {
 
                     <p style={{
                         color: 'var(--text-secondary)',
-                        fontSize: isMobile ? '1rem' : '1.2rem',
+                        fontSize: isMobile ? '0.9rem' : '1.2rem',
                         lineHeight: '1.6',
                         marginBottom: isMobile ? '2rem' : '3rem',
-                        maxWidth: '450px'
+                        maxWidth: '450px',
+                        textAlign: isMobile ? 'justify' : 'left'
                     }}>
                         Describe what you need. I'll help you build a digital experience that fits your brand — instantly.
                     </p>
@@ -173,7 +175,7 @@ const Contact = () => {
                         <form style={{ padding: isMobile ? '1.5rem' : '2.5rem', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
                             <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: '1.5rem' }}>
                                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                                    <label style={{ fontSize: '0.8rem', fontWeight: '600', color: 'rgba(255,255,255,0.7)', marginLeft: '4px' }}>
+                                    <label style={{ fontSize: '0.8rem', fontWeight: '600', color: 'rgba(255,255,255,0.7)', marginLeft: '4px', fontFamily: 'inherit' }}>
                                         Full name <span style={{ color: '#EF4444' }}>*</span>
                                     </label>
                                     <input
@@ -187,12 +189,13 @@ const Contact = () => {
                                             borderRadius: '8px',
                                             color: '#fff',
                                             fontSize: '0.9rem',
-                                            outline: 'none'
+                                            outline: 'none',
+                                            fontFamily: 'inherit'
                                         }}
                                     />
                                 </div>
                                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                                    <label style={{ fontSize: '0.8rem', fontWeight: '600', color: 'rgba(255,255,255,0.7)', marginLeft: '4px' }}>
+                                    <label style={{ fontSize: '0.8rem', fontWeight: '600', color: 'rgba(255,255,255,0.7)', marginLeft: '4px', fontFamily: 'inherit' }}>
                                         Email <span style={{ color: '#EF4444' }}>*</span>
                                     </label>
                                     <input
@@ -206,14 +209,15 @@ const Contact = () => {
                                             borderRadius: '8px',
                                             color: '#fff',
                                             fontSize: '0.9rem',
-                                            outline: 'none'
+                                            outline: 'none',
+                                            fontFamily: 'inherit'
                                         }}
                                     />
                                 </div>
                             </div>
 
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                                <label style={{ fontSize: '0.8rem', fontWeight: '600', color: 'rgba(255,255,255,0.7)', marginLeft: '4px' }}>
+                                <label style={{ fontSize: '0.8rem', fontWeight: '600', color: 'rgba(255,255,255,0.7)', marginLeft: '4px', fontFamily: 'inherit' }}>
                                     Project Details <span style={{ color: '#EF4444' }}>*</span>
                                 </label>
                                 <textarea
@@ -228,7 +232,8 @@ const Contact = () => {
                                         color: '#fff',
                                         fontSize: '0.9rem',
                                         outline: 'none',
-                                        resize: 'none'
+                                        resize: 'none',
+                                        fontFamily: 'inherit'
                                     }}
                                 ></textarea>
                             </div>
@@ -246,7 +251,8 @@ const Contact = () => {
                                     fontSize: '0.95rem',
                                     fontWeight: '600',
                                     cursor: 'pointer',
-                                    boxShadow: '0 4px 15px rgba(139, 92, 246, 0.3)'
+                                    boxShadow: '0 4px 15px rgba(139, 92, 246, 0.3)',
+                                    fontFamily: 'inherit'
                                 }}
                             >
                                 Submit Request
