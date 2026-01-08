@@ -2,10 +2,10 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Github, ArrowUpRight, Code2, Layers, Film, Brain, BarChart3, Palette } from 'lucide-react';
-import cinelineLogo from '../assets/cs logo t.png';
-import ecosphereDummy from '../assets/cyber_earth_thumbnail_1767782079178.png';
-import novaDummy from '../assets/quantum_analytics_thumbnail_1767782097995.png';
-import luminaDummy from '../assets/kinetic_typography_thumbnail_1767782117708.png';
+const cinelineLogo = '/cs logo t.png';
+const ecosphereDummy = '/cyber_earth_thumbnail_1767782079178.png';
+const novaDummy = '/quantum_analytics_thumbnail_1767782097995.png';
+const luminaDummy = '/kinetic_typography_thumbnail_1767782117708.png';
 
 const projects = [
     {

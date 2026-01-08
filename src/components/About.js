@@ -2,7 +2,7 @@
 import React, { useRef, useEffect } from 'react';
 import { motion, useTransform, useInView, useMotionValue, animate } from 'framer-motion';
 import { Terminal, Layers, Users, Cpu, Quote, Sparkles, Code } from 'lucide-react';
-import portraitImg from '../assets/nikiiii.jpg';
+const portraitImg = { src: '/nikiiii.jpg' };
 
 const StatItem = ({ label, value, suffix = "", pad = 0, icon, index }) => {
     const ref = useRef(null);

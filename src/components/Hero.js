@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, useSpring, useTransform, useMotionValue } from 'framer-motion';
 // Optimized approach: Import assets for the bundler to handle correctly for production/GitHub Pages
-import portraitImg from '../assets/nikkeee.jpg';
+const portraitImg = { src: '/nikkeee.jpg' };
 
 const ScrambleText = ({ text, style }) => {
     const [display, setDisplay] = useState(text);
