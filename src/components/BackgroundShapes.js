@@ -10,19 +10,18 @@ const BackgroundShapes = () => {
             height: '100%',
             overflow: 'hidden',
             zIndex: -1,
-            pointerEvents: 'none',
-            background: 'var(--bg-primary)'
+            pointerEvents: 'none'
         }}>
             {/* Simple Grid */}
             <div style={{
                 position: 'absolute',
                 inset: 0,
                 backgroundImage: `
-                    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px)
+                    linear-gradient(to right, rgba(33, 33, 33, 0.03) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px)
                 `,
                 backgroundSize: '100px 100px',
-                opacity: 0.5
+                opacity: 0.035
             }} />
 
             {/* Vignette */}

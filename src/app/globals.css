@@ -15,7 +15,7 @@
   --glass-border: rgba(100, 100, 100, 0.1);
   --font-main: 'Inter', sans-serif;
   --font-heading: 'Plus Jakarta Sans', sans-serif;
-  --pattern-opacity: 0.15;
+  --pattern-opacity: 0.35;
   --text-subtle-fill: rgba(255, 255, 255, 0.05);
   --vignette-color: rgba(0, 0, 0, 0.85);
   --id-card-bg: rgba(255, 255, 255, 0.15);
@@ -67,6 +67,7 @@ body {
   font-family: var(--font-main);
   line-height: 1.6;
   overflow-x: hidden;
+  position: relative;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -74,7 +75,7 @@ body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background-image: url('./assets/bg-pattern.png');
+  background-image: url('/bg-pattern.png');
   background-size: 500px;
   background-repeat: repeat;
   opacity: var(--pattern-opacity);
@@ -133,8 +134,20 @@ ul {
   padding: 0 2rem;
 }
 
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1.25rem;
+  }
+}
+
 .section {
   padding: 6rem 0;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 4rem 0;
+  }
 }
 
 .glass-card {
@@ -426,5 +439,28 @@ ul {
 
   .hero-title {
     font-size: 3.5rem;
+  }
+}
+
+/* Footer Responsive */
+@media (max-width: 640px) {
+  .footer-main .container {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 3rem !important;
+  }
+
+  .footer-main nav {
+    justify-content: flex-start !important;
+    gap: 1.25rem !important;
+  }
+
+  .footer-main nav>a {
+    font-size: 13px !important;
+  }
+
+  .footer-main div:last-child {
+    align-items: flex-start !important;
+    width: 100%;
   }
 }
